@@ -8,14 +8,14 @@
     <script src="loadWasm.js" defer></script>    
 </head>
 <body>
-    <input type="text" id="text1" placeholder="Enter string to hash">
+    <input type="text" id="text1" value="helloworld.html" placeholder="Enter string to hash">
     <button onclick="wasmHashTrigger()">Add</button>
     <p>Result: <span id="result">0</span></p>
 
     <script>
-        function wasmHashTrigger() {
-            const x = parseInt(document.getElementById('text1').value);
-            const sum = wasmHash(x);
+        async function wasmHashTrigger() {
+            const x = document.getElementById('text1').value;
+            const sum = await callGoAndGetResponse(x);
             document.getElementById('result').innerText = sum;
         }
     </script>

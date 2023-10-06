@@ -1,23 +1,22 @@
-//go:build js && wasm
-
 package main
 
 import (
-	"crypto"
-	_ "crypto/sha512"
-	"encoding/hex"
 	"syscall/js"
 )
 
 func main() {
-	done := make(chan struct{}, 0)
-	js.Global().Set("wasmHash", js.FuncOf(hash))
-	<-done
+	c := make(chan struct{}, 0)
+
+	// Expose the callJS function to JavaScript
+	js.Global().Set("callGoFetch", js.FuncOf(jsCallJS))
+
+	<-c
 }
 
-func hash(this js.Value, args []js.Value) interface{} {
-	h := crypto.SHA512.New()
-	h.Write([]byte(args[0].String()))
+func jsCallJS(this js.Value, args []js.Value) interface{} {
+	jsFunc := js.Global().Get("fetchFromGo")
+	promise := jsFunc.Invoke(args[0].String())
 
-	return hex.EncodeToString(h.Sum(nil))
+	// Return the promise directly
+	return promise
 }

@@ -4,15 +4,10 @@
 
 # OuroborosDB
 
-A versioned, distributed key-value store designed for data integrity against bit rot. Uses CRC for added data verification. Offers seamless merging, detailed history with a chain of hashes, and an easy-to-use private-public key security mechanism. Compatible in browsers through WebAssembly (WASM) and on Linux/Docker environments.
+A versioned, distributed key-value store designed for data integrity against bit rot. Uses CRC for added data verification. Offers seamless merging, detailed history with a chain of hashes, and an easy-to-use private-public key security mechanism.
 
 
 ## OuroborosDB Development TODO List (has to change)
-
-- [ ] **WASM Networking Tests**
-  - [ ] Set up the Go environment for WebAssembly compilation.
-  - [ ] Create a basic WASM module in Go.
-  - [ ] Implement networking tests for the WASM module.
   
 - [ ] **Core Database Features**
   - [ ] Define data structures for key-value pairs and metadata.
