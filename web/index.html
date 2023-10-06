@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go WebAssembly Demo</title>
+    <script src="wasm_exec.js" defer></script>
+    <script src="loadWasm.js" defer></script>    
+</head>
+<body>
+    <input type="text" id="text1" placeholder="Enter string to hash">
+    <button onclick="wasmHashTrigger()">Add</button>
+    <p>Result: <span id="result">0</span></p>
+
+    <script>
+        function wasmHashTrigger() {
+            const x = parseInt(document.getElementById('text1').value);
+            const sum = wasmHash(x);
+            document.getElementById('result').innerText = sum;
+        }
+    </script>
+</body>
+</html>
